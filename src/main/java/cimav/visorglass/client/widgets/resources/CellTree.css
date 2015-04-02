@@ -1,0 +1,112 @@
+/* 
+    Document   : CellTree
+    Created on : Nov 29, 2013, 12:23:27 PM
+    Author     : juan.calderon
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+/*
+ * Copyright 2010 Google Inc.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+.cellTreeWidget {
+}
+
+.cellTreeEmptyMessage {
+  padding-left: 16px;
+  font-style: italic;
+}
+
+.cellTreeItem {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  cursor: pointer;
+  border-left: 1px solid #bbb;
+  border-top: 1px dotted white;
+  border-bottom: 1px dotted white;
+}
+
+.cellTreeItemImage {
+}
+
+.cellTreeItemImageValue {
+  border-left: 0px solid green;
+}
+
+.cellTreeItemValue {
+/*  padding-left: 3px;
+  padding-right: 3px;
+  padding-top: 3px;
+  padding-bottom: 3px;*/
+  padding: 0px 1px 0px 1px !important;
+  outline: none;
+}
+
+.cellTreeOpenItem {
+  
+}
+
+.cellTreeTopItem {
+  /* font-weight: bold; */
+  color: #4b4a4a;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding: 0px 1px 0px 1px !important;
+}
+
+.cellTreeTopItemImage {
+  
+}
+
+.cellTreeTopItemImageValue {
+  /* border-bottom: 1px dashed #6f7277; */
+  /* padding-bottom: 0px */
+}
+
+.cellTreeKeyboardSelectedItem {
+  background-color: #F3F3F3; /*#ffc;*/
+  overflow: hidden;
+  border-left: 1px solid #bbb;
+  border-top: 1px dotted #bbb;
+  border-bottom: 1px dotted #bbb;
+}
+
+/* @sprite .cellTreeSelectedItem {
+  gwt-image: 'cellTreeSelectedBackground';
+  background-color: #628cd5;
+  color: white;
+  height: auto;
+  overflow: hidden;
+}*/
+
+.cellTreeSelectedItem {
+  background-color: #DDDDDD; /*lightgray; /*skyblue;*/
+  color: #555555; /*#777777; /* darkgray;*/ /* white; */
+  height: auto;
+  overflow: auto;
+  border-top: 1px dotted #515151;
+  border-bottom: 1px dotted #717171;
+  border-left: 1px solid #bbb;
+
+}
+
+.cellTreeShowMoreButton {
+  padding-left: 16px;
+  outline: none;
+}
+
+
+

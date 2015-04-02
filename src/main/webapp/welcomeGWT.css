@@ -1,0 +1,293 @@
+/* 
+    Document   : welcomeGWT
+    Created on : Nov 20, 2013, 12:24:51 PM
+    Author     : juan.calderon
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.gwt-DecoratorPanel {
+}
+.gwt-DecoratorPanel .topCenter {
+    border-top: 1px solid #0000ff; /* #BBBBBB; */
+    line-height: 0px;
+}
+.gwt-DecoratorPanel .bottomCenter {
+    border-bottom: 0px solid;
+    line-height: 0px;
+}
+.gwt-DecoratorPanel .topCenterInner,
+.gwt-DecoratorPanel .bottomCenterInner {
+    height: 1px;
+    line-height: 0px;
+    font-size: 1px;
+}
+.gwt-DecoratorPanel .middleLeft {
+    border-left: 1px solid #bbb;
+}
+.gwt-DecoratorPanel .middleRight {
+    border-right: 1px solid #bbb;
+}
+.gwt-DecoratorPanel .middleLeftInner,
+.gwt-DecoratorPanel .middleRightInner {
+    width: 1px;
+    line-height: 1px;
+}
+.gwt-DecoratorPanel .topLeftInner,
+.gwt-DecoratorPanel .topRightInner,
+.gwt-DecoratorPanel .bottomLeftInner,
+.gwt-DecoratorPanel .bottomRightInner {
+    width: 1px;
+    height: 1px;
+    zoom: 1;
+    font-size: 1px;
+    overflow: hidden;
+}
+.gwt-DecoratorPanel .topLeft {
+    line-height: 0px;
+    background: url(images/circles.png) no-repeat 0px -6px;
+    -background: url(images/circles_ie6.png) no-repeat 0px -6px;
+}
+.gwt-DecoratorPanel .topRight {
+    line-height: 0px;
+    background: url(images/circles.png) no-repeat -5px -6px;
+    -background: url(images/circles_ie6.png) no-repeat -5px -6px;
+}
+.gwt-DecoratorPanel .bottomLeft {
+    line-height: 0px;
+    background: url(images/circles.png) no-repeat 0px -11px;
+    -background: url(images/circles_ie6.png) no-repeat 0px -11px;
+}
+.gwt-DecoratorPanel .bottomRight {
+    line-height: 0px;
+    background: url(images/circles.png) no-repeat -5px -11px;
+    -background: url(images/circles_ie6.png) no-repeat -5px -11px;
+}
+html>body .gwt-DecoratorPanel {
+}
+* html .gwt-DecoratorPanel .topLeftInner,
+* html .gwt-DecoratorPanel .topRightInner,
+* html .gwt-DecoratorPanel .bottomLeftInner,
+* html .gwt-DecoratorPanel .bottomRightInner {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.gwt-DecoratorPanel .middleCenter {
+    height: 100%;
+    width: 100%;
+    padding: 1px;
+    marging: 0px;
+}
+
+/****************
+*
+****************/
+.gwt-TabLayoutPanel {
+    position: absolute !important; /* Requerido */
+    border: none !important; 
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+}
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelContentContainer {
+    border: none !important; 
+}
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelContent {
+    overflow: hidden;
+    padding: 0px !important;
+}
+.gwt-TabLayoutPanelTabs {
+    background: #ECE8E8 !important; 
+    padding: 0px !important;
+}
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTab {
+margin-left: 4px;
+padding: 3px 8px 0px 8px  !important;
+cursor: pointer;
+cursor: pointer;
+color: white;
+font-weight: normal;
+text-align: center;
+background: #8E8E8E;
+-moz-border-radius: 3px 3px 0px 0px  !important;
+border-radius: 8px 8px 0px 0px  !important;
+}
+.transparente {
+    color: rgb(255, 255, 255);
+}
+
+.jsfiddle_label {
+    background-color:#FFFFFF;
+    background-position:initial initial;
+    background-repeat:initial initial;
+    border:1px solid lightgray; /*#bbb;*/ /* #F1F1F1; */
+    border-bottom-left-radius:1px;
+    border-bottom-right-radius:1px;
+    border-top-left-radius:1px;
+    border-top-right-radius:1px;
+    color:#777777;
+    display:inline-block;
+    font-size:11px;
+    height:16px;
+    line-height:16px;
+    padding:0 2px;
+    position:absolute;
+    right:6px;
+    text-align:center;
+    bottom:2px;
+    z-index:2;
+}
+
+/**********
+ Arbol
+**********/
+
+.divDeptoArbolItem {
+    margin-top: 10px;
+    margin-bottom: 3px; 
+    /*    border: 1px solid red;*/
+}
+.divTipoDocArbolItem {
+    margin-top: 0px;
+    margin-bottom: 3px; 
+    /*    border: 1px solid purple;*/
+}
+.spanRight {
+    position: absolute;
+    top: 1px;
+    right: 5px;
+    /*    border: 1px solid green;*/
+}
+
+samp {
+    margin: 0 4px 1px 0;
+    padding: 0 1px 0 1px;
+    color: #515151;
+    white-space: nowrap;
+    background-color: #f7f7f7;
+    border: 1px solid #717171; /*#e1e1e1;*/
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+/***********
+ Documentos 
+************/
+.tableDoc {
+    border: none;
+    margin-top: 2px;
+    margin-bottom: 3px;
+}
+.iconClass {
+    padding-right: 8px;
+}
+.nombreClass {
+    font-size: 12px;
+    font-weight: 600;
+    color: #404040;
+}
+.fragmentosClass{
+    margin-top: 3px;
+    color: #5d665b;
+    font-family: Verdana, Geneva, Arial, sans-serif;
+    font-size: x-small;
+    line-height: 100%;
+} 
+
+/****************
+ Breadcrumb Ruta
+ ***************/
+
+#breadcrumbs-ruta {
+    overflow: hidden;
+    width: 100%;
+    /*margin: 0;*/
+    padding: 0;
+    list-style: none;
+    margin: 0 0 0 0 !important; /* muy importante */
+}
+#breadcrumbs-ruta li {
+    float: left;
+    margin: 0 7px 0px 7px;
+    line-height: 14px;
+}
+#breadcrumbs-ruta spam {
+    background: #DDDDDD;
+    padding: 0 0 0 3px;
+    float: left;
+    color: #444;
+    position: relative;
+    font-size: 11px;
+}
+#breadcrumbs-ruta spam::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5em;
+    margin-bottom: -1.5em;
+    border-width: 1.5em 0 1.5em 1em;
+    border-style: solid;
+    border-color: #DDDDDD #DDDDDD #DDDDDD transparent;
+    left: -1em;
+}
+#breadcrumbs-ruta spam::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5em;
+    border-top: 1.5em solid transparent;
+    border-bottom: 1.5em solid transparent;
+    border-left: 1em solid #DDDDDD;
+    right: -1em;
+}
+
+/***************
+* Grafo
+***************/
+
+svg {overflow: visible;}  /* Se requiere para FF y IE10; de lo contrario el SVG sale invisible. */
+
+#svg{
+/*  position:absolute; top:5px; left:5px; right:10px; bottom:15px; border: 1px solid red;  
+  z-index: 2;*/
+}
+.link {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+
+
+/*
+#Hacia {
+   fill: green;
+}
+
+.link.Hacia {
+   stroke: green;
+}
+*/
+
+.link.Desde {
+  stroke-dasharray: 0,2 1;
+}
+
+circle {
+/*  fill: #ccc;
+  stroke: #333;*/
+  stroke-width: 1.5px;
+}
+text {
+  font: 10px sans-serif;
+  pointer-events: none;
+  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;
+}
+

@@ -1,0 +1,97 @@
+<!--
+Uncomment this for XHTML entities
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+-->
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+             xmlns:g="urn:import:com.google.gwt.user.client.ui"
+             xmlns:b="urn:import:com.github.gwtbootstrap.client.ui">
+    <ui:style>
+
+        .header_bar {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 46px; <!-- lo que mide el logo-->
+        padding: 4px;
+        border-top: 4px solid red;
+        border-bottom: 1px solid gray;
+        }
+        .north_bar {
+        position: absolute;
+        top: 60px;
+        left: 3px;
+        right: 5px;
+        }
+        .central_DivPanel{
+        position: absolute;
+        top: 60px;
+        left: 3px;
+        right: 5px;
+        bottom: 46px;
+        }
+        
+        .footer_bar {
+        height: 40px;
+        right: 1px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 4px;
+        }
+        
+        .login_panel {
+        margin-right:8px;
+        }
+        .login_label {
+        margin-right:4px;
+        font: bold 12px verdana, arial, sans-serif, #BBBBBB;
+        }
+        .login_image {
+        margin-right:4px;
+        border: 1px solid gray;
+        }
+        .acerca_label {
+        opacity: 0.5;
+        font: bold 11px verdana, arial, sans-serif, gray;
+        }
+        .loginSignImage, loginLabel {
+            cursor: pointer; cursor: hand;
+        }
+        
+    </ui:style>
+    <g:HTMLPanel>
+        
+        <div class="{style.header_bar}">
+            <table width="100%">
+                <tr>
+                    <td>
+                        <g:Image url="images/cimav-header-logo-46.png" />
+                    </td>
+                    <td>
+                    </td>
+                    <td align="right" style="vertical-align:middle;">
+                        <g:HorizontalPanel ui:field="loginPanel" styleName="{style.login_panel}" verticalAlignment="ALIGN_MIDDLE">
+                            <g:Image ui:field="loginImage" styleName="{style.login_image}" url="images/user-unlogged-icon.png" />
+                            <g:Label ui:field="loginLabel" styleName="{style.login_label}">Juan Calderas</g:Label>
+                            <g:Image ui:field="loginSignImage" url="images/sign-in-icon.png" />
+                        </g:HorizontalPanel>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="{style.central_DivPanel}">
+            <g:FlowPanel ui:field="centralFlowPanel" width="100%" height="100%"></g:FlowPanel>
+        </div>
+
+        <div class="{style.footer_bar}">
+            <g:DecoratorPanel width="100%" height="100%">
+                <g:HorizontalPanel ui:field="fotterPanel" horizontalAlignment="ALIGN_CENTER" width="100%" height="100%">
+                    <g:Label styleName="{style.acerca_label}">Programa Institucional de la Calidad | Control de Documentos | Visor 0.7.0</g:Label>
+                </g:HorizontalPanel>
+            </g:DecoratorPanel>
+        </div>
+        
+    </g:HTMLPanel>
+</ui:UiBinder>

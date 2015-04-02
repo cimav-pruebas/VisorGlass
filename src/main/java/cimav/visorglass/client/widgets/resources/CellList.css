@@ -1,0 +1,60 @@
+/* 
+    Document   : CellList
+    Created on : Dec 2, 2013, 10:05:21 AM
+    Author     : juan.calderon
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.cellListWidget {
+/* color: #021650;
+ background-color: #021650;*/
+}
+
+.cellListEvenItem {
+/*cursor: pointer;
+zoom: 1;
+background: cyan;*/
+  padding-top: 0px;
+  padding-bottom: 0px;
+  cursor: pointer;
+/*  border-left: 1px solid #bbb;*/
+  border-top: 1px dotted white;
+  border-bottom: 1px dotted #CECECE;
+}
+
+.cellListOddItem {
+/*cursor: pointer;
+zoom: 1;
+background: greenyellow;*/
+  padding-top: 0px;
+  padding-bottom: 0px;
+  cursor: pointer;
+/*  border-left: 1px solid #bbb;*/
+  border-top: 1px dotted white;
+  border-bottom: 1px dotted #CECECE;
+
+}
+
+.cellListKeyboardSelectedItem {
+/*background: #ffc;*/
+  background-color: #F3F3F3; /*#ffc;*/
+  overflow: hidden;
+  border-left: 1px solid #bbb;
+  border-top: 1px dotted #bbb;
+  border-bottom: 1px dotted #bbb;
+}
+
+.cellListSelectedItem {
+/*background-color: #628cd5;
+color: white;
+height: auto;
+overflow: visible;*/
+  background-color: #DDDDDD;
+  color: #555555; 
+  height: auto;
+  overflow: auto;
+  border-top: 1px dotted #515151;
+  border-bottom: 1px dotted #717171;
+  border-left: 1px solid #bbb;
+}
