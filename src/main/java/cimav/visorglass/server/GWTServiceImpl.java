@@ -151,7 +151,7 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
                     // el depto de la estructura puede que no exista  en los Vigentes
                     dsTipos = Files.newDirectoryStream(pathTipo);
                 } catch (IOException ex) {
-                    Logger.getLogger(GWTServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(GWTServiceImpl.class.getName()).log(Level.INFO, "Path Estructura: {0} > No existe en Vigentes.", pathTipo.toString());
                 }
 
                 if (dsTipos != null) {
@@ -165,7 +165,7 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
                             tipo.setCodigoDepto(depto.getCodigo());
                             tipo.setCodigo(codigoTipo);
                         
-                            tipo.setDocs(this.cargaDocs(dirTipo));
+                            tipo.setDocs(this.cargaDocs(pathTipos.toString()));
                     
                             depto.getTipos().add(tipo);
                         }
@@ -175,7 +175,7 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
                 
             }
         } catch (Exception eg) {
-            System.out.println("GWTServiceImpl.cargarArbol " + eg.getMessage());
+            Logger.getLogger(GWTServiceImpl.class.getName()).log(Level.SEVERE, " cargaArbol > " + eg.getMessage());
         }
 
         Arbol arbol = new Arbol(usuario, deptos);
@@ -199,6 +199,7 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
             try {
                 elPath = Paths.get(dirTipo);
             } catch (Exception t){
+                Logger.getLogger(GWTServiceImpl.class.getName()).log(Level.SEVERE, " cargaDocs > " + dirTipo + " > " + t.getMessage());
             }
             Files.walkFileTree(elPath, new SimpleFileVisitor<Path>() {
                 @Override
@@ -215,7 +216,7 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
                             sep = "\\\\";
                         }
                         
-                        int idx = pathFile.toString().indexOf(vigentes) + vigentes.length();
+                        int idx = pathFile.toString().indexOf(vigentes) + vigentes.length() + 1;
                         String subPath = pathFile.toString().substring(idx);
                         String subPaths[] = subPath.split(sep);
                         String depto = subPaths[0];
@@ -229,10 +230,11 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
                         }
                         
                         if (nombre.length() > 1) try {
-                            InputStream is = java.nio.file.Files.newInputStream(pathFile);
-                            String textContent = grabTextContent(parser, is);
+                            //InputStream is = java.nio.file.Files.newInputStream(pathFile);
                             
-                            String codigosReferenciados = grabCodigos(textContent);
+                            String textContent = ""; //grabTextContent(parser, is);
+                            
+                            String codigosReferenciados = ""; //grabCodigos(textContent);
 
                             Documento doc = new Documento(depto, tipo, codigo, nombre, textContent, codigosReferenciados);
                                         
@@ -244,9 +246,9 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
 //                            }
                          
                         } catch (ArrayIndexOutOfBoundsException ex) {
-                            System.out.println(">>> " + ex.getMessage());
+                            Logger.getLogger(GWTServiceImpl.class.getName()).log(Level.SEVERE, " cargaDocs.visitFile > " + pathFile + " > " + ex.getMessage());
                         } catch (Exception ex) {
-                            System.out.println(">>> " + ex.getMessage());
+                            Logger.getLogger(GWTServiceImpl.class.getName()).log(Level.SEVERE, " cargaDocs.visitFile > " + pathFile + " > " + ex.getMessage());
                         }
                     }
                     return FileVisitResult.CONTINUE;
