@@ -155,23 +155,6 @@ Uncomment this for XHTML entities
                                     
                                         </g:Frame>
                                     </g:tab>
-                                    <g:tab>
-                                        <g:header size='7'>Grafo</g:header>
-                                        <g:HTMLPanel width="100%" height="100%">
-                                            <!-- Filtro -->
-                                            <!-- 
-                                            <div id="sidebar" style="display: none;">
-                                                <div class="item-group">
-                                                    <label class="item-label">Referencias</label>
-                                                    <div id="filterContainer" class="filterContainer checkbox-interaction-group"></div>
-                                                </div>
-                                            </div>
-                                            -->
-                                            <!-- Grafo D3/Svg-->
-                                            <svg  id="svg-id" >
-                                            </svg>
-                                        </g:HTMLPanel>
-                                    </g:tab>                                
                                 </g:TabLayoutPanel>
 <!--                            </g:HTMLPanel>                       -->
                         </g:DecoratorPanel>

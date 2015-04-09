@@ -37,8 +37,8 @@ public class Constantes {
     // http://fortawesome.github.io/Font-Awesome/icons/
     public static final String ICON_TIPO_SELECTED = "fa-folder-open-o";
     public static final String ICON_TIPO = "fa-folder-o";
-    public static final String ICON_DOCUMENTO_SELECTED = "fa-file";
-    public static final String ICON_DOCUMENTO = "fa-file-o";
+    public static final String ICON_DOCUMENTO_SELECTED = "fa-file-text";
+    public static final String ICON_DOCUMENTO = "fa-file-text-o";
     public static final String ICON_USUARIO_SIN_FOTO = "images/user-unlogged-icon.png";
     public static final String ICON_SIGN_OUT = "images/sign-out-icon.png";
     public static final String ICON_SIGN_IN = "images/sign-in-icon.png";

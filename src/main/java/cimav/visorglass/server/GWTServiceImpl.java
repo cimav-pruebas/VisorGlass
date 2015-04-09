@@ -353,21 +353,27 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
             for (Path pathDepto : dsDeptos) {
 
                 try {
-                    Depto depto = new Depto();
                     String txt = pathDepto.getFileName().toString();
 
-                    String codigo = txt.split("-")[0];
-                    String nombre = txt.split("-")[1];
-                    depto.setCodigo(codigo.trim());
-                    depto.setNombre(nombre.trim());
+                    // solo para comprobar que mas o menos el depto cumpla con la estructura
+                    boolean esCorrecto = !txt.contains(".") && txt.contains("-") && txt.contains(" ") && txt.length() >= 3;
+                    if (esCorrecto) {
+                    
+                        Depto depto = new Depto();
 
-                    DirectoryStream<Path> dsPermisos = Files.newDirectoryStream(pathDepto);
-                    for (Path pathPermiso : dsPermisos) {
-                        String cuenta = pathPermiso.getFileName().toString();
-                        depto.getCuentas().add(cuenta);
+                        String codigo = txt.split("-")[0];
+                        String nombre = txt.split("-")[1];
+                        depto.setCodigo(codigo.trim());
+                        depto.setNombre(nombre.trim());
+
+                        DirectoryStream<Path> dsPermisos = Files.newDirectoryStream(pathDepto);
+                        for (Path pathPermiso : dsPermisos) {
+                            String cuenta = pathPermiso.getFileName().toString();
+                            depto.getCuentas().add(cuenta);
+                        }
+
+                        deptos.add(depto);
                     }
-
-                    deptos.add(depto);
                 } catch (Exception ex) {
                     // TODO no tiene ningun tipo de proteccion encaso de que el nombre/codigo cambie, ni sensible al case.
                     // si falla en subir un depto, simplemente se lo saltea

@@ -358,13 +358,13 @@ public class PanelesLayout extends Composite {
                     && this.docSelectionModel.getSelectedObject().equals(value);
             String iconTag = "<i class='fa ";
             iconTag = isSelected
-                    ? iconTag + Constantes.ICON_DOCUMENTO_SELECTED + " fa-l' style='color:white'></i>"
-                    : iconTag + Constantes.ICON_DOCUMENTO + " fa-l' style='color:#999999'></i>";
-
+                    ? iconTag + Constantes.ICON_DOCUMENTO_SELECTED + " fa-3x' style='color:white'></i>"
+                    : iconTag + Constantes.ICON_DOCUMENTO + " fa-3x' style='color:#B8B8B8'></i>";
+            
             String html =
                     "<table class='tableDoc' cellspacing='0' cellpadding='0'> " + 
                     "   <tr> " +
-                    //"       <td class='iconClass' rowspan='3' valign='top'>ICON_TAG</td> " +
+                    "       <td class='iconClass' rowspan='3' valign='top'>THE_ICON_TAG</td> " +
                     "       <td class='nombreClass' colspan='2' align='left'>NOMBRE_TAG</td> " +
                     "   </tr> " +
                     "   <tr> " +
@@ -385,7 +385,7 @@ public class PanelesLayout extends Composite {
             rutaBreadCrumb = rutaBreadCrumb.replace("DEPTO_TAG", value.getCodigoDepto());
             rutaBreadCrumb = rutaBreadCrumb.replace("TIPO_TAG", value.getCodigoTipo());
             
-            html = html.replace("ICON_TAG", iconTag);
+            html = html.replace("THE_ICON_TAG", iconTag);
 //            html = html.replace("CODIGO_TAG", value.getCodigo());
 //            html = html.replace("NOMBRE_TAG", value.getNum() + ") " + value.getNombre());
             html = html.replace("NOMBRE_TAG", value.getNombre());
