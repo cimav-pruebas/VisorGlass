@@ -40,6 +40,7 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -62,7 +63,11 @@ import org.xml.sax.SAXException;
  */
 public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
 
+    private static FileHandler fileTxt;
+    //private static final Handler handlerLogger = new FileHandler("visor.log");
+//Logger.getLogger("").addHandler(handler);
     private static final Logger log = Logger.getLogger(GWTServiceImpl.class.getCanonicalName());
+    
 
     @Override
     public Usuario loginProfile(String tokenAutorizado) {
@@ -151,7 +156,7 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
                     // el depto de la estructura puede que no exista  en los Vigentes
                     dsTipos = Files.newDirectoryStream(pathTipo);
                 } catch (IOException ex) {
-                    Logger.getLogger(GWTServiceImpl.class.getName()).log(Level.INFO, "Path Estructura: {0} > No existe en Vigentes.", pathTipo.toString());
+                    log.log(Level.INFO, "Path Estructura: {0} > No existe en Vigentes.", pathTipo.toString());
                 }
 
                 if (dsTipos != null) {
@@ -175,7 +180,7 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
                 
             }
         } catch (Exception eg) {
-            Logger.getLogger(GWTServiceImpl.class.getName()).log(Level.SEVERE, " cargaArbol > " + eg.getMessage());
+            log.log(Level.SEVERE, " cargaArbol > " + eg.getMessage());
         }
 
         Arbol arbol = new Arbol(usuario, deptos);
@@ -199,7 +204,7 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
             try {
                 elPath = Paths.get(dirTipo);
             } catch (Exception t){
-                Logger.getLogger(GWTServiceImpl.class.getName()).log(Level.SEVERE, " cargaDocs > " + dirTipo + " > " + t.getMessage());
+                log.log(Level.SEVERE, " cargaDocs > " + dirTipo + " > " + t.getMessage());
             }
             Files.walkFileTree(elPath, new SimpleFileVisitor<Path>() {
                 @Override
@@ -246,9 +251,9 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
 //                            }
                          
                         } catch (ArrayIndexOutOfBoundsException ex) {
-                            Logger.getLogger(GWTServiceImpl.class.getName()).log(Level.SEVERE, " cargaDocs.visitFile > " + pathFile + " > " + ex.getMessage());
+                           log.log(Level.SEVERE, " cargaDocs.visitFile > " + pathFile + " > " + ex.getMessage());
                         } catch (Exception ex) {
-                            Logger.getLogger(GWTServiceImpl.class.getName()).log(Level.SEVERE, " cargaDocs.visitFile > " + pathFile + " > " + ex.getMessage());
+                            log.log(Level.SEVERE, " cargaDocs.visitFile > " + pathFile + " > " + ex.getMessage());
                         }
                     }
                     return FileVisitResult.CONTINUE;
@@ -310,7 +315,7 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
                 }
             }
         } catch (IOException ex) {
-            Logger.getLogger(GWTServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            log.log(Level.SEVERE, null, ex);
 
             String error = ex.getMessage();
             if (error.contains("timed")) {
@@ -342,6 +347,18 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
 
     @Override
     public List<Depto> cargarPermisosDeptos() {
+        
+        try {
+            fileTxt = new FileHandler("Visor.log");
+            log.addHandler(fileTxt);
+        } catch (IOException ex) {
+            log.log(Level.SEVERE, null, ex);
+        } catch (SecurityException ex) {
+            log.log(Level.SEVERE, null, ex);
+        }
+        
+        log.log(Level.INFO, "Log Creado");
+        
         List<Depto> deptos = new ArrayList<Depto>();
 
         String realPath = getServletContext().getRealPath("/");
@@ -377,11 +394,11 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
                 } catch (Exception ex) {
                     // TODO no tiene ningun tipo de proteccion encaso de que el nombre/codigo cambie, ni sensible al case.
                     // si falla en subir un depto, simplemente se lo saltea
-                    Logger.getLogger(GWTServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+                    log.log(Level.SEVERE, null, ex);
                 }
             }
         } catch (IOException ex) {
-            Logger.getLogger(GWTServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            log.log(Level.SEVERE, null, ex);
 
             String error = ex.getMessage();
             if (error.contains("timed")) {
@@ -424,7 +441,7 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
 
             }
         } catch (IOException ex) {
-            Logger.getLogger(GWTServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
+            log.log(Level.SEVERE, null, ex);
 
             String error = ex.getMessage();
             if (error.contains("timed")) {
