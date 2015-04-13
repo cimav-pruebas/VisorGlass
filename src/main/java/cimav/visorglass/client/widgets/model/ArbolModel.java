@@ -120,7 +120,7 @@ public class ArbolModel implements TreeViewModel {
                     sb.appendHtmlConstant("<div class='divDeptoArbolItem'><samp>"+depto.getCodigo()+"</samp>" + depto.getNombre() +"</div>");
                 } else if (value instanceof TipoDocumento) {
                     TipoDocumento tipoDocumento = (TipoDocumento) value;
-                    sb.appendHtmlConstant("<div class='divTipoDocArbolItem'><samp>"+tipoDocumento.getCodigo()+"</samp>" + tipoDocumento.getNombre() + "</div>");
+                    sb.appendHtmlConstant("<div class='divTipoDocArbolItem'><samp>"+tipoDocumento.getCodigo()+"</samp><samp>" + tipoDocumento.getDocs().size() + "</samp>" + tipoDocumento.getNombre() + "</div>");
                 }
                
             }
