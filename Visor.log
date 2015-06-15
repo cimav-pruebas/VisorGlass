@@ -2,79 +2,69 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2015-04-10T16:36:35</date>
-  <millis>1428705395910</millis>
+  <date>2015-04-22T09:39:50</date>
+  <millis>1429717190743</millis>
   <sequence>0</sequence>
   <logger>cimav.visorglass.server.GWTServiceImpl</logger>
   <level>INFO</level>
   <class>cimav.visorglass.server.GWTServiceImpl</class>
   <method>cargarPermisosDeptos</method>
-  <thread>51</thread>
+  <thread>46</thread>
   <message>Log Creado</message>
 </record>
 <record>
-  <date>2015-04-10T16:36:53</date>
-  <millis>1428705413570</millis>
+  <date>2015-04-22T09:40:09</date>
+  <millis>1429717209629</millis>
   <sequence>1</sequence>
   <logger>cimav.visorglass.server.GWTServiceImpl</logger>
   <level>INFO</level>
   <class>cimav.visorglass.server.GWTServiceImpl</class>
   <method>cargarArbol</method>
-  <thread>47</thread>
+  <thread>50</thread>
   <message>Path Estructura: /Users/calderon/DropboxTest/CONTROL_DE_DOCUMENTOS/VIGENTES/CP &gt; No existe en Vigentes.</message>
 </record>
 <record>
-  <date>2015-04-10T16:36:53</date>
-  <millis>1428705413571</millis>
+  <date>2015-04-22T09:40:16</date>
+  <millis>1429717216640</millis>
   <sequence>2</sequence>
   <logger>cimav.visorglass.server.GWTServiceImpl</logger>
   <level>INFO</level>
   <class>cimav.visorglass.server.GWTServiceImpl</class>
   <method>cargarArbol</method>
-  <thread>47</thread>
+  <thread>50</thread>
   <message>Path Estructura: /Users/calderon/DropboxTest/CONTROL_DE_DOCUMENTOS/VIGENTES/MTO &gt; No existe en Vigentes.</message>
 </record>
 <record>
-  <date>2015-04-10T16:36:53</date>
-  <millis>1428705413571</millis>
+  <date>2015-04-22T09:40:21</date>
+  <millis>1429717221392</millis>
   <sequence>3</sequence>
   <logger>cimav.visorglass.server.GWTServiceImpl</logger>
   <level>INFO</level>
   <class>cimav.visorglass.server.GWTServiceImpl</class>
   <method>cargarArbol</method>
-  <thread>47</thread>
+  <thread>50</thread>
   <message>Path Estructura: /Users/calderon/DropboxTest/CONTROL_DE_DOCUMENTOS/VIGENTES/RH &gt; No existe en Vigentes.</message>
 </record>
 <record>
-  <date>2015-04-10T16:36:53</date>
-  <millis>1428705413572</millis>
+  <date>2015-04-22T09:40:34</date>
+  <millis>1429717234363</millis>
   <sequence>4</sequence>
   <logger>cimav.visorglass.server.GWTServiceImpl</logger>
   <level>INFO</level>
   <class>cimav.visorglass.server.GWTServiceImpl</class>
   <method>cargarArbol</method>
-  <thread>47</thread>
+  <thread>50</thread>
   <message>Path Estructura: /Users/calderon/DropboxTest/CONTROL_DE_DOCUMENTOS/VIGENTES/TIC &gt; No existe en Vigentes.</message>
 </record>
 <record>
-  <date>2015-04-10T16:36:53</date>
-  <millis>1428705413572</millis>
+  <date>2015-04-22T09:40:35</date>
+  <millis>1429717235500</millis>
   <sequence>5</sequence>
   <logger>cimav.visorglass.server.GWTServiceImpl</logger>
   <level>INFO</level>
   <class>cimav.visorglass.server.GWTServiceImpl</class>
   <method>cargarArbol</method>
-  <thread>47</thread>
+  <thread>50</thread>
   <message>Path Estructura: /Users/calderon/DropboxTest/CONTROL_DE_DOCUMENTOS/VIGENTES/VN &gt; No existe en Vigentes.</message>
 </record>
-<record>
-  <date>2015-04-13T09:21:24</date>
-  <millis>1428938484767</millis>
-  <sequence>6</sequence>
-  <logger>cimav.visorglass.server.GWTServiceImpl</logger>
-  <level>INFO</level>
-  <class>cimav.visorglass.server.GWTServiceImpl</class>
-  <method>cargarPermisosDeptos</method>
-  <thread>51</thread>
-  <message>Log Creado</message>
-</record>
+</log>

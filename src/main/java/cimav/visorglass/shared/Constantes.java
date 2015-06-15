@@ -42,6 +42,7 @@ public class Constantes {
     public static final String ICON_USUARIO_SIN_FOTO = "images/user-unlogged-icon.png";
     public static final String ICON_SIGN_OUT = "images/sign-out-icon.png";
     public static final String ICON_SIGN_IN = "images/sign-in-icon.png";
+    public static final String ICON_FILE_DOWNLOAD = "fa-file-text-o";
     
     public static final String MSG_USUARIO_NO_LOGEADO = "Por favor, fírmese con su cuenta del Cimav";
 

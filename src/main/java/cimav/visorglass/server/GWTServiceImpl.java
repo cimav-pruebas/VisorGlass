@@ -144,19 +144,20 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
         String realPath = getServletContext().getRealPath("/");
         Common.loadSandBox(realPath);
 
-        //Path pathDeptos = FileSystems.getDefault().getPath(Common.DropBoxVigentesPath);
+        Path pathTipo = null;
+        DirectoryStream<Path> dsTipos = null;
         try {
             for (Depto depto : usuario.getDeptos()) {
                 String dirTipo = Common.DropBoxVigentesPath + "/" + depto.getCodigo();
 
-                Path pathTipo = FileSystems.getDefault().getPath(dirTipo);
+                pathTipo = FileSystems.getDefault().getPath(dirTipo);
 
-                DirectoryStream<Path> dsTipos = null;
                 try {
                     // el depto de la estructura puede que no exista  en los Vigentes
                     dsTipos = Files.newDirectoryStream(pathTipo);
                 } catch (IOException ex) {
                     log.log(Level.INFO, "Path Estructura: {0} > No existe en Vigentes.", pathTipo.toString());
+                    dsTipos = null;
                 }
 
                 if (dsTipos != null) {
@@ -176,11 +177,21 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
                         }
                     }
                     deptos.add(depto);
+                    
+                    dsTipos.close();
                 }
                 
             }
-        } catch (Exception eg) {
-            log.log(Level.SEVERE, " cargaArbol > " + eg.getMessage());
+        } catch (IOException eg) {
+            log.log(Level.SEVERE, " cargaArbol > for (Path pathTipos : dsTipos) { >" + eg.getMessage());
+        } finally {
+            if (dsTipos !=null) {
+                try {
+                    dsTipos.close();
+                } catch (IOException ex) {
+                    log.log(Level.SEVERE, "Falló en dsTipos");
+                }
+            }
         }
 
         Arbol arbol = new Arbol(usuario, deptos);
@@ -304,9 +315,10 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
         String realPath = getServletContext().getRealPath("/");
         Common.loadSandBox(realPath);
 
+        DirectoryStream<Path> dsAdmins = null;
         try {
             Path pathAdmins = FileSystems.getDefault().getPath(Common.DropBoxAdministradoresPath);
-            DirectoryStream<Path> dsAdmins = Files.newDirectoryStream(pathAdmins);
+            dsAdmins = Files.newDirectoryStream(pathAdmins);
             for (Path pathPermiso : dsAdmins) {
                 String cuentaAdmin = pathPermiso.getFileName().toString();
                 if (cuentaAdmin.equals(cuentaUsuario)) {
@@ -314,8 +326,9 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
                     break;
                 }
             }
+            dsAdmins.close();
         } catch (IOException ex) {
-            log.log(Level.SEVERE, null, ex);
+            log.log(Level.SEVERE, "esAdministrador", ex);
 
             String error = ex.getMessage();
             if (error.contains("timed")) {
@@ -323,6 +336,14 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
             }
             if (error.contains("refused")) {
                 error = "ConnectionRefused";
+            }
+        } finally {
+            if (dsAdmins != null) {
+                try {
+                    dsAdmins.close();
+                } catch (IOException ex) {
+                    log.log(Level.SEVERE, "Falló dsAdmins.close();");
+                }
             }
         }
 
@@ -365,8 +386,9 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
         Common.loadSandBox(realPath);
 
         Path pathDeptos = FileSystems.getDefault().getPath(Common.DropBoxDeptosPath);
+        DirectoryStream<Path> dsDeptos = null;
         try {
-            DirectoryStream<Path> dsDeptos = Files.newDirectoryStream(pathDeptos);
+            dsDeptos = Files.newDirectoryStream(pathDeptos);
             for (Path pathDepto : dsDeptos) {
 
                 try {
@@ -383,22 +405,24 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
                         depto.setCodigo(codigo.trim());
                         depto.setNombre(nombre.trim());
 
-                        DirectoryStream<Path> dsPermisos = Files.newDirectoryStream(pathDepto);
-                        for (Path pathPermiso : dsPermisos) {
-                            String cuenta = pathPermiso.getFileName().toString();
-                            depto.getCuentas().add(cuenta);
+                        try (DirectoryStream<Path> dsPermisos = Files.newDirectoryStream(pathDepto)) {
+                            for (Path pathPermiso : dsPermisos) {
+                                String cuenta = pathPermiso.getFileName().toString();
+                                depto.getCuentas().add(cuenta);
+                            }
                         }
 
                         deptos.add(depto);
                     }
-                } catch (Exception ex) {
+                } catch (IOException ex) {
                     // TODO no tiene ningun tipo de proteccion encaso de que el nombre/codigo cambie, ni sensible al case.
                     // si falla en subir un depto, simplemente se lo saltea
-                    log.log(Level.SEVERE, null, ex);
+                    log.log(Level.SEVERE, "Falló en for (Path pathDepto : dsDeptos) ", ex);
                 }
             }
+            dsDeptos.close();
         } catch (IOException ex) {
-            log.log(Level.SEVERE, null, ex);
+            log.log(Level.SEVERE, "Falló en dsDeptos = Files.newDirectoryStream(pathDeptos);", ex);
 
             String error = ex.getMessage();
             if (error.contains("timed")) {
@@ -406,6 +430,14 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
             }
             if (error.contains("refused")) {
                 error = "ConnectionRefused";
+            }
+        } finally {
+            if (dsDeptos != null) {
+                try {
+                    dsDeptos.close();
+                } catch (IOException ex) {
+                    log.log(Level.SEVERE, "Falló el dsDeptos.close()");
+                }
             }
         }
 
@@ -421,27 +453,27 @@ public class GWTServiceImpl extends RemoteServiceServlet implements GWTService {
 
         Path pathTipos = FileSystems.getDefault().getPath(Common.DropBoxTiposPath);
         try {
-            DirectoryStream<Path> ds = Files.newDirectoryStream(pathTipos);
-            for (Path p : ds) {
-                System.out.println(p.getFileName() + "     >>       " + p.toAbsolutePath());
-
-                TipoDocumento tipo = new TipoDocumento("NONE");
-                String txt = p.getFileName().toString();
-                try {
-                    // TODO no tiene ningun tipo de proteccion encaso de que el nombre/codigo cambie, ni sensible al case.
-                    String codigo = txt.split("-")[0];
-                    String nombre = txt.split("-")[1];
-                    tipo.setCodigo(codigo.trim());
-                    tipo.setNombre(nombre.trim());
-
-                    tipos.add(tipo);
-                } catch (Exception ex) {
-
+            try (DirectoryStream<Path> ds = Files.newDirectoryStream(pathTipos)) {
+                for (Path p : ds) {
+                    System.out.println(p.getFileName() + "     >>       " + p.toAbsolutePath());
+                    
+                    TipoDocumento tipo = new TipoDocumento("NONE");
+                    String txt = p.getFileName().toString();
+                    try {
+                        // TODO no tiene ningun tipo de proteccion encaso de que el nombre/codigo cambie, ni sensible al case.
+                        String codigo = txt.split("-")[0];
+                        String nombre = txt.split("-")[1];
+                        tipo.setCodigo(codigo.trim());
+                        tipo.setNombre(nombre.trim());
+                        
+                        tipos.add(tipo);
+                    } catch (Exception ex) {
+                        log.log(Level.SEVERE, "DirectoryStream<Path> ds = Files.newDirectoryStream(pathTipos))", ex);
+                    }
                 }
-
             }
         } catch (IOException ex) {
-            log.log(Level.SEVERE, null, ex);
+            log.log(Level.SEVERE, "DirectoryStream<Path> ds = Files.newDirectoryStream(pathTipos)", ex);
 
             String error = ex.getMessage();
             if (error.contains("timed")) {

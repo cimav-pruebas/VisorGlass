@@ -188,6 +188,8 @@ samp {
 }
 .iconClass {
     padding-right: 8px;
+    width: 18px;
+    padding-left: 3px;
 }
 .nombreClass {
     font-size: 12px;

@@ -362,7 +362,7 @@ public class PanelesLayout extends Composite {
                     : iconTag + Constantes.ICON_DOCUMENTO + " fa-3x' style='color:#B8B8B8'></i>";
             
             String html =
-                    "<table class='tableDoc' cellspacing='0' cellpadding='0'> " + 
+                    "<table width='100%' class='tableDoc' cellspacing='0' cellpadding='0'> " + 
                     "   <tr> " +
                     "       <td class='iconClass' rowspan='3' valign='top'>THE_ICON_TAG</td> " +
                     "       <td class='nombreClass' colspan='2' align='left'>NOMBRE_TAG</td> " +
@@ -372,6 +372,9 @@ public class PanelesLayout extends Composite {
                     "   </tr> " +
                     "   <tr> " +
                     "       <td aling='left'>FRAGMENTOS_TAG</td> " +
+                    "       <td style='width: 22px; padding-left: 6px;'>" +
+                    "           <a href='SRC_FILE_TO_DOWN'><i class='fa fa-download fa-lg' style='color:white'></i></a>" +
+                    "       </td>" +
                     "   </tr> " +
                     "</table> ";
 
@@ -390,6 +393,13 @@ public class PanelesLayout extends Composite {
 //            html = html.replace("NOMBRE_TAG", value.getNum() + ") " + value.getNombre());
             html = html.replace("NOMBRE_TAG", value.getNombre());
             html = html.replace("RUTA_TAG", rutaBreadCrumb);
+            
+            String urlDoc = value.getFullUrl(servidorArchivosVigentes);
+            urlDoc = URL.encode(urlDoc);
+            urlDoc = URL.encode(urlDoc);
+            urlDoc = urlDoc.replaceAll("%25", "%"); // sucede con el doble encode
+            
+            html = html.replace("SRC_FILE_TO_DOWN", urlDoc);
             
             String fragmentos = "<p class='fragmentosClass'>";
             for(String frag :  value.getFragmentos()) {
