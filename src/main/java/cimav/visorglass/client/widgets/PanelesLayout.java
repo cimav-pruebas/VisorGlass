@@ -373,7 +373,7 @@ public class PanelesLayout extends Composite {
                     "   <tr> " +
                     "       <td aling='left'>FRAGMENTOS_TAG</td> " +
                     "       <td style='width: 22px; padding-left: 6px;'>" +
-                    "           <a href='SRC_FILE_TO_DOWN'><i class='fa fa-download fa-lg' style='color:white'></i></a>" +
+                    "           <a href='SRC_FILE_TO_DOWN' target='_blank'><i class='fa fa-download fa-lg' style='color:COLOR_FILE_TO_DOWN'></i></a>" +
                     "       </td>" +
                     "   </tr> " +
                     "</table> ";
@@ -400,6 +400,7 @@ public class PanelesLayout extends Composite {
             urlDoc = urlDoc.replaceAll("%25", "%"); // sucede con el doble encode
             
             html = html.replace("SRC_FILE_TO_DOWN", urlDoc);
+            html = html.replace("COLOR_FILE_TO_DOWN", isSelected ? "gray" : "lightgray");
             
             String fragmentos = "<p class='fragmentosClass'>";
             for(String frag :  value.getFragmentos()) {

@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>cimav</groupId>
     <artifactId>VisorGlass</artifactId>
-    <version>0.8.11</version>
+    <version>0.8.50</version>
     <packaging>war</packaging>
     <name>VisorGlass</name>
     <properties>
